@@ -1,5 +1,9 @@
 function nicknameMap(persons) {
-  // ...
+  let nicknameArray = [];
+  for(let i=0; i < persons.length; i++) {
+    nicknameArray.push(persons[i].name + '-' + persons[i].age);
+  }
+  return nicknameArray;
 }
 
 const persons = [
