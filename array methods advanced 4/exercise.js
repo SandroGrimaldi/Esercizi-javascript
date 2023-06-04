@@ -1,5 +1,16 @@
 function uncompletedNotes(notes) {
-  // ...
+   /* Devo fare in modo che filtri i todos cercando i done:false per ogni elemento note di notes
+     e poi pushi i todos con done:false nell'array notDone*/
+  
+  let notDone = [];
+ 
+  notes.forEach(note => {
+    note.todos.filter(todo => !todo.done)
+      .forEach(todo => {notDone.push(todo);
+    });
+  });
+  
+  return notDone;
 }
 
 const notes = [
