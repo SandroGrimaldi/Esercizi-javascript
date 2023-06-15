@@ -1,7 +1,9 @@
 function isAdult({age}) {
   /*return person.age >= 18;*/
   if(age >=18){
-    return age;
+    return true;
+  }else{
+    return false;
   }
 }
 
