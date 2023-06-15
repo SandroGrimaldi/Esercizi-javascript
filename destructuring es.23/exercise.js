@@ -5,6 +5,8 @@ function isAdult({age}) {
   }else{
     return false;
   }
+  /* posso anche semplicemente cambiare il parametro in isAdult lasciando il return
+  senza creare un if */
 }
 
 const person = {
