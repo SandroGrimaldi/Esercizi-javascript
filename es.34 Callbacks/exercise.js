@@ -1,9 +1,7 @@
 function printAsyncName(callback,name){
-    let printHello = setInterval(callback, 1000);
-    let printName = setInterval(() => console.log(name), 2000);
-    setTimeout(()=> clearInterval(printHello),5000);
-    setTimeout(()=> clearInterval(printName),5000);
+    setTimeout(() => callback(), 1000)
+    setTimeout(() => console.log(name), 2000)
 }
 
 
-printAsyncName(() => console.log(`Hello`) ,'Mario')
+printAsyncName(() => console.log(`Hello`), 'Mario')
