@@ -1,0 +1,39 @@
+<html>
+  <body>
+    <div id="container" style="display: flex; align-items: center;">
+     <!-- <ul>
+        <li></li>
+      </ul> -->
+    </div>
+  </body>
+</html>
+
+<script>
+  // code here
+  
+  async function filterToDo(array){
+    let converted= await convertList(array);
+    const completed=[];
+    const notCompleted=[];
+    console.log(converted);
+   let operation= converted.forEach((el)=>{
+    if(!el.completed){
+        notCompleted.push(el);
+    }else{
+        completed.push(el);
+    }
+   })
+   return operation
+  }
+
+  function convertList(array){
+    let conversion= (array) => array.json();
+  return conversion;
+  }
+
+
+fetch(`https://jsonplaceholder.typicode.com/todos`)
+.then((res)=> filterToDo(res))
+.then((val)=>console.log(val))
+.catch((err)=> console.error(err))
+</script>
