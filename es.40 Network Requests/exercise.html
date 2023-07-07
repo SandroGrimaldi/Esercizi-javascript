@@ -11,7 +11,38 @@
 <script>
   // code here
   
-  async function filterToDo(array){
+  async function filterToDo(){
+    try{
+      const firstStep = await fetch(`https://jsonplaceholder.typicode.com/todos`);
+      const json = await firstStep.json();
+
+      /*fatta API request e conversione, targettiamo il contenitore dove inserire tutto*/
+      const container = document.querySelector("#container");
+
+      /*creiamo ul con class todo-list e gli li da inserire all'interno*/
+      const ul = document.createElement("ul");
+      ul.className = "todo-list";
+      container.appendChild(ul);
+      const toDoList = document.querySelector(".todo-list");
+      
+      json.forEach((element) => {
+        const li = document.createElement("li");
+        li.innerHTML = element.title;
+        toDoList.appendChild(li);
+      });
+    }
+    /* in caso di errori creiamo anche:*/
+    catch (error){
+      console.error("Error:",error);
+    }
+    
+  }
+
+  filterToDo()
+
+
+ /* Tentativo fallimentare, incompleto e molto probabilmente sbagliato fatto prima delle lezioni sui DOM:
+ async function filterToDo(array){
     let converted= await convertList(array);
     const completed=[];
     const notCompleted=[];
@@ -35,5 +66,5 @@
 fetch(`https://jsonplaceholder.typicode.com/todos`)
 .then((res)=> filterToDo(res))
 .then((val)=>console.log(val))
-.catch((err)=> console.error(err))
+.catch((err)=> console.error(err))*/
 </script>
