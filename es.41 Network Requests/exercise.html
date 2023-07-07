@@ -9,11 +9,39 @@
 
 <script>
   // code here
+  async function substitutionH2(){
+    try{
+      /* fetch e trasformazione in json*/
+      const firstStep = await fetch(`https://jsonplaceholder.typicode.com/todos/4`);
+      const json = await firstStep.json();
+
+      /* fatta API request e conversione, targettiamo il contenitore dove inserire tutto*/
+      const container = document.querySelector("#container");
+
+      /* creiamo h2 e input type="checkbox" richiesti*/
+      const h2 = document.createElement("h2");
+      h2.innerHTML = json.title;
+
+      const inputCheckbox = document.createElement("input");
+      inputCheckbox.type = "checkbox";
+      inputCheckbox.checked = json.completed;
+
+      /*inseriamo entrambi nel container*/
+      container.appendChild(h2);
+      container.appendChild(inputCheckbox);
+    }
+    catch(error){
+      console.error("Error: ",error)
+    }
+  }
+
+  substitutionH2()
+ /* tentativo senza futuro...
   function substitutionH2(array){
     
   }
   fetch("https://jsonplaceholder.typicode.com/todos/4")
   .then((res)=>res.json())
   .then((val)=>console.log(val))
-  .catch((err)=>console.error(err))
+  .catch((err)=>console.error(err))*/
 </script>
