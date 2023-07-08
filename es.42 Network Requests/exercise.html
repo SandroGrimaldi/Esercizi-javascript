@@ -18,5 +18,32 @@
 </html>
 
 <script>
-  // code here
+   // code here
+  
+  try{
+    /* fetch e trasformazione in json*/
+    const firstStep = await fetch(`https://jsonplaceholder.typicode.com/posts`, { method:"post", body: JSON.stringify(postObj) });
+    const json = await firstStep.json();
+
+    /*creiamo i const per input e button*/
+    const formVal = document.querySelector("form");
+    const titleVal = document.querySelector("#todo-title");
+    const completedVal = document.querySelector("#todo-completed");
+
+    /*modifichiamo il comportamento di default del form e creiamo il postObj*/
+    formVal.addEventListener("submit", async (evt)=>{
+      evt.preventDefault();
+
+      const postObj = {
+        title: titleVal.value,
+        completed: completedVal.checked
+      }
+
+    })
+  }
+
+  /*in caso di errori*/
+  catch(error){
+    console.error("Error: ",error)
+  }
 </script>
